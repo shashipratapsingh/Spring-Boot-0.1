@@ -1,0 +1,71 @@
+server :
+  port: 8089
+spring:
+  application:
+    name: User-service
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: root
+    username: root
+    url: jdbc:mysql://localhost/Micro?useSSL=false&allowMultiQueries=true&serverTimezone=UTC
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+ #rejilence 4j configuration
+management:
+  health:
+    circuitbreakers:
+      enable: true
+    enable: true
+  endpoint:
+    web:
+      exposure:
+        include: health
+
+management.endpoint.health.show-details: always
+
+resilience4j:
+ circuitbreaker:
+  instance:
+   UserRatingBreaker:
+     registerHealthIndicator: true
+     eventConsumerBufferSize: 10
+     failureRateThreshold: 50
+     minimumNumberOfCalls: 5
+     automaticTransitionFromOpenToHalfOpenEnable: true
+     waitDurationInOpenState: 6s
+     permittedNumberOfCallInHalfOfState: 3
+     slidingWindowSize: 10
+     slidingWindowType: COUNT_BASED
+
+
+# retry -----------configuration
+  #retry:
+   # instances:
+   #   ratingHotelService:
+    #    max-attempts: 3
+     #   wait-duration: 5s
+
+#----------rateLimte configuration
+
+  #ratelimiter:
+  #  instances:
+    #  userRateLimiter:
+     #   limit-refresh-period: 4s
+       # limit-for-period:  2
+      #  timeout-duration: 0s
+
+

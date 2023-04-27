@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rating" />
+        <module name="serviceRegistory" />
+        <module name="Micro" />
+        <module name="APIgetway" />
+        <module name="ConfigurationServer" />
+        <module name="com.HotelService" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="APIgetway" target="1.8" />
+      <module name="com.HotelService" target="1.8" />
+      <module name="ConfigurationServer" target="1.8" />
+      <module name="Micro" target="1.8" />
+      <module name="rating" target="1.8" />
+      <module name="serviceRegistory" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="APIgetway" options="-parameters" />
+      <module name="ConfigurationServer" options="-parameters" />
+      <module name="Micro" options="-parameters" />
+      <module name="com.HotelService" options="-parameters" />
+      <module name="rating" options="-parameters" />
+      <module name="serviceRegistory" options="-parameters" />
+    </option>
+  </component>
+</project>

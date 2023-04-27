@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Micro/pom.xml" />
+        <option value="$PROJECT_DIR$/com.HotelService/pom.xml" />
+        <option value="$PROJECT_DIR$/rating/pom.xml" />
+        <option value="$PROJECT_DIR$/serviceRegistory/pom.xml" />
+        <option value="$PROJECT_DIR$/APIgetway/pom.xml" />
+        <option value="$PROJECT_DIR$/ConfigurationServer/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>
