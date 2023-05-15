@@ -1,0 +1,54 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /kisaan
+
+spring:
+  application:
+    name: kisaan-app
+  profiles:
+    active: local
+  main:
+    banner-mode: "off"
+  config:
+    use-legacy-processing: true
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: dbo
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
+file:
+  path:
+    video:
+---
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kisaan
+    username: postgres
+    password: Bluethink@2023
+file:
+  images:
+    root-path: C:\ppl\FarmApp\images
+  videos:
+    root-path: C:\ppl\FarmApp\videos
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://164.52.219.123:5432/FarmerApp
+    username: postgres
+    password: 1234
+file:
+  images:
+    root-path: E:\jai kisaan API\images
+  videos:
+    root-path: E:\jai kisaan API\videos
