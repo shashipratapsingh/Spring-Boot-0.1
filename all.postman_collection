@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "2e014b7d-c215-4343-a791-fbbe7fd82cab",
+		"name": "CSVUpload",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27237446"
+	},
+	"item": [
+		{
+			"name": "addcsv",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/shash/Downloads/MOCK_DATA (2).csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"companyName\":\"companyName\",\r\n    \"companyAddress\":\"companyAddress\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "otpSend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/otp/send?mobileNumber=8577951142",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"otp",
+						"send"
+					],
+					"query": [
+						{
+							"key": "mobileNumber",
+							"value": "8577951142"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "otpverify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/otp/send?mobileNumber=8577951142?otp=506522",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"otp",
+						"send"
+					],
+					"query": [
+						{
+							"key": "mobileNumber",
+							"value": "8577951142?otp=506522"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "smsMail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/email/send?to=shukla1411jyoti@gmail.com&subject=Mail API testing&body=I have giving resign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"email",
+						"send"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "shukla1411jyoti@gmail.com"
+						},
+						{
+							"key": "subject",
+							"value": "Mail API testing"
+						},
+						{
+							"key": "body",
+							"value": "I have giving resign"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
