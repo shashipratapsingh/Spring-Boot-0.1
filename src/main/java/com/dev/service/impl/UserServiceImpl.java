@@ -38,13 +38,6 @@ public class UserServiceImpl implements UserService {
         return CompletableFuture.completedFuture(users);
 
     }
-    @Async
-    public CompletableFuture<List<Users>> findAllUsers(){
-        logger.info("get all user By "+Thread.currentThread().getName());
-        List<Users> users=userRepo.findAll();
-        return CompletableFuture.completedFuture(users);
-    }
-
     private List<Users> parseCSVFile(final MultipartFile file) throws Exception {
         final List<Users> users = new ArrayList<>();
         try (final BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
@@ -65,4 +58,12 @@ public class UserServiceImpl implements UserService {
             throw new Exception("failed to parse CSV file{}", e);
         }
     }
+    @Async
+    public CompletableFuture<List<Users>> findAllUsers(){
+        logger.info("get all user By "+Thread.currentThread().getName());
+        List<Users> users=userRepo.findAll();
+        return CompletableFuture.completedFuture(users);
+    }
+
+
 }
