@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-
 public class CompanyProfileController {
 
     @Autowired
@@ -18,6 +17,7 @@ public class CompanyProfileController {
     public CompanyProfile createCompany(@RequestBody CompanyProfile companyProfile) {
         return this.companyService.createCompany(companyProfile);
     }
+
 
 
 }
