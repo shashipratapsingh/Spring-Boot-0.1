@@ -1,0 +1,600 @@
+{
+	"info": {
+		"_postman_id": "2e014b7d-c215-4343-a791-fbbe7fd82cab",
+		"name": "CSVUpload",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27237446"
+	},
+	"item": [
+		{
+			"name": "security",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"raja1@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"raja@gmail.com\",\r\n    \"password\":\"123\",\r\n    \"authorities\":[\r\n        {\r\n            \"authority\":\"ROLE_ROOT\"\r\n        }\r\n    ]\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "raja1@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/dashboard",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "raja1@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "addcsv",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/shash/Downloads/MOCK_DATA (2).csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"companyName\":\"companyName\",\r\n    \"companyAddress\":\"companyAddress\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "otpSend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/otp/send?mobileNumber=8577951142",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"otp",
+						"send"
+					],
+					"query": [
+						{
+							"key": "mobileNumber",
+							"value": "8577951142"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "otpverify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/otp/send?mobileNumber=8577951142?otp=506522",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"otp",
+						"send"
+					],
+					"query": [
+						{
+							"key": "mobileNumber",
+							"value": "8577951142?otp=506522"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "smsMail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/email/send?to1=shukla1411jyoti@gmail.com&subject1=Mail API testing&body1=I have giving resign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"email",
+						"send"
+					],
+					"query": [
+						{
+							"key": "to1",
+							"value": "shukla1411jyoti@gmail.com"
+						},
+						{
+							"key": "subject1",
+							"value": "Mail API testing"
+						},
+						{
+							"key": "body1",
+							"value": "I have giving resign"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"rajasinghRajwansi\",\r\n    \"age\": 24,\r\n    \"location\": \"Noida\",\r\n    \"email\": \"itpro@gmail.com\",\r\n    \"department\": \"IT manager\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/employee/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEmployees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findEmployeeByid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findEmployeeByNameAndSorting",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/find/rajasingh",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"find",
+						"rajasingh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteEmployee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatesEmployee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n   {\r\n\r\n    \"name\" : \"shasi API1\",\r\n    \"age\": 24,\r\n    \"location\": \"Noida\",\r\n    \"email\": \"itpro@gmail.com\",\r\n    \"department\": \"Bank manager\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/employee/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findBYnameandLocation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/find/findByNameAndLocation/raja pratap singh/Noida",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"find",
+						"findByNameAndLocation",
+						"raja pratap singh",
+						"Noida"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByKeyword",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/find/findBy/keyword=rajasinghRajwansi",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"find",
+						"findBy",
+						"keyword=rajasinghRajwansi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "employeeByPagenation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/list?pageNumber=0&pageSize=5",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"list"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/find/raja pratap singh",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"find",
+						"raja pratap singh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEmployeeByNameOrLocation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/find/getEmployeeByNameOrLocation/raja pratap singh/Noida",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"find",
+						"getEmployeeByNameOrLocation",
+						"raja pratap singh",
+						"Noida"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteByNameQueryParametes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/delete/rajasinghRajwansi1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"delete",
+						"rajasinghRajwansi1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findEmployeeByNative query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/employee/filter/",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employee",
+						"filter",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

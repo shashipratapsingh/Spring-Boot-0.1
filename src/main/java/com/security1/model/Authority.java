@@ -15,9 +15,9 @@ public class Authority {
     private Long id;
     private String authority;
 
-   /* @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;*/
+    private User user;
 
 
 

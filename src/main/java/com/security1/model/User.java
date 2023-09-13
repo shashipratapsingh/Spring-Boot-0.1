@@ -19,9 +19,9 @@ public class User {
     @JsonIgnore
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "authority_id")
-    private Authority authority;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private Set<Authority> authorities;
 
 
 }

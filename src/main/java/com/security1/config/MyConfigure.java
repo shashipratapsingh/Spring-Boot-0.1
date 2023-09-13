@@ -17,8 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class MyConfigure extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private CustomUserService userDetailsService;
+
 
     @Autowired
     CustomAuthenticationProvider customAuthenticationProvider;
@@ -29,17 +28,15 @@ public class MyConfigure extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/register","/login").permitAll()
-                .antMatchers("/dashboard").hasAuthority("READ")
-                .antMatchers("/profile").hasAuthority("WRITE")
-                /*.anyRequest().authenticated()*/
+                .antMatchers("/dashboard").hasRole("SUPERADMIN")
+                .antMatchers("/profile").hasAnyRole("ADMIN","USER")
                 .and()
                 .httpBasic();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-      // auth.authenticationProvider(customAuthenticationProvider);
+      auth.authenticationProvider(customAuthenticationProvider);
     }
 
     @Bean

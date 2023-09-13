@@ -30,13 +30,20 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String password=authentication.getCredentials().toString();
         User user=userRepository.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("User not found"));
         if(passwordEncoder.matches(password,user.getPassword())) {
-            List<GrantedAuthority> authorities=new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(user.getAuthority().getAuthority()));
-            return new UsernamePasswordAuthenticationToken(email, password, authorities);
+            return new UsernamePasswordAuthenticationToken(email, password, getAuthorities(user.getAuthorities()));
         }else
         {
             throw new BadCredentialsException("Invalid Credentials");
         }
+    }
+
+    private Set<SimpleGrantedAuthority> getAuthorities(Set<Authority> authorities) {
+        Set<SimpleGrantedAuthority> list=new HashSet<>();
+        for (Authority auth:authorities)
+        {
+            list.add(new SimpleGrantedAuthority(auth.getAuthority()));
+        }
+        return list;
     }
 
     @Override
