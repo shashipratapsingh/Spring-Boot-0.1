@@ -4,24 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class MyConfigure extends WebSecurityConfigurerAdapter {
+public class MyConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private CustomUserService userDetailsService;
 
-    @Autowired
-    CustomAuthenticationProvider customAuthenticationProvider;
+
+      @Autowired
+     private CustomAuthenticationProvider customAuthenticationProvider;
+
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -29,28 +27,31 @@ public class MyConfigure extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/register","/login").permitAll()
-                .antMatchers("/dashboard").hasAuthority("READ")
-                .antMatchers("/profile").hasAuthority("WRITE")
-                /*.anyRequest().authenticated()*/
+                .antMatchers("/dashboard").hasRole("SUPERADMIN")
+                .antMatchers("/profile").hasAnyRole("ADMIN","USER")  // ROLE_ADMIN. ROLE_USER , ROLE_ROOT, ROLE_SUPERADMIN
                 .and()
                 .httpBasic();
     }
 
+
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-      // auth.authenticationProvider(customAuthenticationProvider);
+    protected void configure (AuthenticationManagerBuilder auth) throws Exception{
+        // auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());  // by custom authentication
+
+
+        auth.authenticationProvider(customAuthenticationProvider);
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
+
     @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception{
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 }
-

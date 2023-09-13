@@ -1,12 +1,25 @@
 package com.security1.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.security1.model.Authority;
-import lombok.Data;
+import lombok.*;
 
-@Data
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Set;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class UserDto {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String email;
     private String password;
-    private Authority authority;
+    private Set<Authority> authorities;
 }

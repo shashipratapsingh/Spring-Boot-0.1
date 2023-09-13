@@ -4,21 +4,19 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
 @Entity
-@Table(name = "tbl_authority")
+@Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tbl_authorities")
 public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String authority;
 
-   /* @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;*/
-
-
-
+    private User user;
 }

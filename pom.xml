@@ -8,8 +8,8 @@
 		<version>2.7.15</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.security1</groupId>
-	<artifactId>security1</artifactId>
+	<groupId>com.securityRename</groupId>
+	<artifactId>securityRename</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>security1</name>
 	<description>Demo project for Spring Boot security1</description>
