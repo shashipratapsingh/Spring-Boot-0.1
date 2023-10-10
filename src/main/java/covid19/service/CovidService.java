@@ -21,9 +21,7 @@ public class CovidService {
 
            @Autowired
           private RestTemplate restTemplate;
-
-
-           public Object getAllCountryCovidData(){
+              public Object getAllCountryCovidData(){
                try {
 
                    HttpHeaders headers=new HttpHeaders();
