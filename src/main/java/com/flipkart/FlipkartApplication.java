@@ -8,6 +8,7 @@ public class FlipkartApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FlipkartApplication.class, args);
+		System.out.println("testing");
 	}
 
 }
