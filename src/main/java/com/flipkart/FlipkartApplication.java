@@ -10,7 +10,7 @@ public class FlipkartApplication {
 		SpringApplication.run(FlipkartApplication.class, args);
 		System.out.println("testing");
 
-		System.out.println("ewkrh");
+		System.out.println("ewkrasdash");
 	}
 
 }
