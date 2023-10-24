@@ -18,6 +18,6 @@ public class StreamApiDublicate {
                         .filter(x->x.getValue()>1)
                                 .map(Map.Entry::getKey)
                                         .collect(Collectors.toList());
-        //System.out.println(dublicateElements);
+        System.out.println(dublicateElements);
     }
 }
