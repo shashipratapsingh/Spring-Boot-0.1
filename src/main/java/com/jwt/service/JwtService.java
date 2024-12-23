@@ -45,7 +45,7 @@ public class JwtService
      User user=userDoa.findById(userName).get();
      return new JwtResponse(user,newGeneratedToken);
     }
-    @Override
+    //@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
        User user= userDoa.findById(username).get();
        if (user !=null)

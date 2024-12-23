@@ -28,8 +28,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private JwtRequestFilter jwtRequestFilter;
 
     @Autowired
-    private UserDetailsService jwtService; // reffreing JwtService and need to autowire here but it implemnt other class so we have to autowire
-                                            // to UserDetails service class.
+    private UserDetailsService jwtService;
 
     @Bean
     @Override
@@ -37,7 +36,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    protected void configure(HttpSecurity httpSecurity) throws Exception{
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors();
         httpSecurity.csrf().disable()
                 .authorizeHttpRequests().antMatchers("/authenticate").permitAll()
@@ -56,12 +56,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception
+    @Override
+    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception
     {
         authenticationManagerBuilder.userDetailsService(jwtService).passwordEncoder(passwordEncoder());
     }
-
 
 
 }
